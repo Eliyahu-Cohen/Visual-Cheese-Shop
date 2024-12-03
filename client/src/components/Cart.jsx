@@ -1116,36 +1116,64 @@ const Cart = () => {
   const toggleCart = () => {
     setShowCart(!showCart);
   };
-
   const checkout = async () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    console.log("userInfo =>",userInfo);
-    
-    if (!userInfo) {
-      alert("אנא התחבר לפני ביצוע הזמנה");
-      return;
+
+    if (!userInfo || !userInfo.id || !userInfo.username || !userInfo.phone) {
+        alert("אנא התחבר לפני ביצוע הזמנה");
+        return;
     }
-  
-    try {
-      const orderData = {
-        userId: userInfo.id,  // וודא ש-`userInfo.id` מוגדר כמו שצריך
+
+    const orderData = {
+        userId: userInfo.id,
         username: userInfo.username,
         phone: userInfo.phone,
         totalPrice: TotalPayable,
-        items: cart,  // פרטי העגלה
-      };
-      
-      console.log("orderData =>",orderData);
-  
-      await axios.post('http://localhost:3001/api/orders', orderData);
-      alert("ההזמנה נשמרה בהצלחה!");
-      localStorage.removeItem("cart");
-      setCart([]); // ריקון העגלה
+        items: cart,
+    };
+
+    try {
+        console.log("orderData =>", orderData);
+
+        await axios.post('http://localhost:3001/api/orders', orderData);
+        alert("ההזמנה נשמרה בהצלחה!");
+        localStorage.removeItem("cart");
+        setCart([]); // ריקון העגלה
     } catch (error) {
-      console.error("שגיאה בשמירת ההזמנה:", error);     
-      alert("אירעה שגיאה. נסה שוב מאוחר יותר.");
+        console.error("שגיאה בשמירת ההזמנה:", error.response || error);
+        alert("אירעה שגיאה. נסה שוב מאוחר יותר.");
     }
-  };
+};
+
+  // const checkout = async () => {
+  //   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  //   console.log("userInfo =>",userInfo);
+    
+  //   if (!userInfo) {
+  //     alert("אנא התחבר לפני ביצוע הזמנה");
+  //     return;
+  //   }
+  
+  //   try {
+  //     const orderData = {
+  //       userId: userInfo.id,  
+  //       username: userInfo.username,
+  //       phone: userInfo.phone,
+  //       totalPrice: TotalPayable,
+  //       items: cart,  
+  //     };
+      
+  //     console.log("orderData =>",orderData);
+  
+  //     await axios.post('http://localhost:3001/api/orders', orderData);
+  //     alert("ההזמנה נשמרה בהצלחה!");
+  //     localStorage.removeItem("cart");
+  //     setCart([]); // ריקון העגלה
+  //   } catch (error) {
+  //     console.error("שגיאה בשמירת ההזמנה:", error);     
+  //     alert("אירעה שגיאה. נסה שוב מאוחר יותר.");
+  //   }
+  // };
   
   // const checkout = async () => {
   //   const userInfo = JSON.parse(localStorage.getItem('userInfo'));

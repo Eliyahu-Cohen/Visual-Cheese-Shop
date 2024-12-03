@@ -111,7 +111,7 @@
 // export default Header;
 
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Categories from "./Categories";
 import ProductDetails from "./ProductDetails"; // יבוא של דף פרטי המוצר
@@ -173,8 +173,14 @@ function Header() {
     <header className="Rectangle_header">
       <nav>
         <div className="item_left">
-          <Link to="/AdminPage">להוספת מוצר/קטגוריה</Link>
-          <Link to="/adminOrders">לצפיה בהזמנות</Link>
+        <div className="nav-links">
+  <Link to="/AdminPage">להוספת מוצר/קטגוריה</Link>
+  <Link to="/adminOrders">לצפיה בהזמנות</Link>
+  <Link to="/cart">צפייה בסל הקניות</Link>
+  <Link to="/adminUsers">צפייה בנתוני משתמשים</Link>
+</div>
+
+
           <div className="search-container">
             <input
               type="text"
@@ -197,7 +203,7 @@ function Header() {
               </ul>
             )}
           </div>
-          <Link to="/cart">צפייה בסל הקניות</Link>
+          
         </div>
         <img
           className="item_center"

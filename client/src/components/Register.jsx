@@ -146,34 +146,6 @@ function Register() {
 
 
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post("http://localhost:3001/api/users/register", formData);
-      
-  //     // עדכון המצב בהצלחה
-  //     setSuccessMessage("הרישום הצליח! אתם מועברים...");
-  //     setErrorMessage("");
-      
-  //     // שמירת טוקן ופרטי המשתמש ב-localStorage
-  //     localStorage.setItem("token", response.data.token);
-  //     localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo));
-      
-  //     // מעבר לדף הבית
-  //     setTimeout(() => {
-  //       navigate("/");  // שימוש ב-navigate
-  //     }, 2000);
-  //   } catch (error) {
-  //     // טיפול בשגיאות
-  //     if (error.response) {
-  //       setErrorMessage(error.response.data.message || "שגיאה בהרשמה");
-  //     } else {
-  //       setErrorMessage("שגיאה בחיבור לשרת");
-  //     }
-  //     setSuccessMessage("");
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -183,9 +155,11 @@ function Register() {
       setErrorMessage("");
       
       // שמירת הטוקן ופרטי המשתמש ב-localStorage
+      localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo));
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo));  // ודא ששומר כ-JSON
       
+    
+    
       setTimeout(() => {
         window.location.href = "/";  // ניווט לדף הבית
       }, 2000);

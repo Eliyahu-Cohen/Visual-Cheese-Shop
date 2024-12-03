@@ -1193,3 +1193,65 @@ background: linear-gradient(to right, rgb(102, 255, 0), rgb(226, 213, 35));
 .admin-orders button:hover {
   background-color: #45a049;
 }
+
+
+.cart-message {
+  position: fixed;
+  top: 10%; /* שליש עליון */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fffbcc;
+  color: #333;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.admin-users {
+  padding: 20px;
+}
+.user-summary p {
+  font-weight: bold;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column; /* מיקום לינקים אנכי */
+  gap: 15px; /* רווח בין הלינקים */
+  padding: 20px;
+}
+
+.nav-links a {
+  text-decoration: none; /* ביטול הקו התחתון */
+  color: #fff; /* צבע טקסט */
+  background-color: #4CAF50; /* צבע רקע */
+  padding: 12px 20px; /* ריווח פנימי */
+  border-radius: 8px; /* פינות מעוגלות */
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.3s ease; /* אפקט מעבר חלק */
+}
+
+.nav-links a:hover {
+  background-color: #45a049; /* צבע רקע על hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל */
+  transform: scale(1.05); /* הגדלה קלה */
+}
+
+.nav-links a:active {
+  background-color: #388e3c; /* צבע רקע על לחיצה */
+}
+
+
+

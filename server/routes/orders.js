@@ -141,13 +141,28 @@ router.get("/", async (req, res) => {
   try {
     // שליפת כל ההזמנות
     const [orders] = await db.query(`
-      SELECT o.id AS order_id, o.username, o.phone, o.total_price, o.status, o.created_at,
-             GROUP_CONCAT(CONCAT(op.product_name, ' (x', op.quantity, ')') SEPARATOR ', ') AS products
-      FROM orders o
-      LEFT JOIN order_products op ON o.id = op.order_id
-      GROUP BY o.id
-      ORDER BY o.created_at DESC
+ SELECT 
+    o.id AS order_id, 
+    o.user_id, 
+    o.username, 
+    o.phone, 
+    o.total_price, 
+    o.status, 
+    o.created_at,
+    GROUP_CONCAT(CONCAT(op.product_name, ' (x', op.quantity, ')') SEPARATOR ', ') AS products
+FROM 
+    orders o
+LEFT JOIN 
+    order_products op 
+ON 
+    o.id = op.order_id
+GROUP BY 
+    o.id, o.user_id, o.username, o.phone, o.total_price, o.status, o.created_at
+ORDER BY 
+    o.created_at DESC
+
     `);
+  
 
     res.json(orders);
   } catch (error) {
@@ -158,23 +173,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.post("/", async (req, res) => {
-//   const { userId, username, phone, totalPrice, items } = req.body;
-//   console.log("Received order data:", { userId, username, phone, totalPrice, items });
-
-//   try {
-//     const result = await db.query(
-//       "INSERT INTO orders (userId, username, phone, totalPrice, items) VALUES (?, ?, ?, ?, ?)",
-//       [userId, username, phone, totalPrice, JSON.stringify(items)]  // אם items הוא מערך, שים לב לשמור אותו כ-JSON
-//     );
-
-//     console.log("Order inserted:", result);
-//     return res.json({ message: "ההזמנה הוזנה בהצלחה" });
-//   } catch (error) {
-//     console.error("Order insertion error:", error);
-//     return res.status(500).json({ message: "שגיאה בשרת", error: error.message });
-//   }
-// });
 
 // שמירת הזמנה
 router.post("/", async (req, res) => {
@@ -209,5 +207,45 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: "שגיאה בשמירת ההזמנה" });
   }
 });
+
+
+router.get("/user-details/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [user] = await db.query(
+      "SELECT id, username, email, phone, address, userType, created_at FROM users WHERE id = ?",
+      [id]
+    );
+
+    if (!user.length) {
+      return res.status(404).json({ message: "משתמש לא נמצא" });
+    }
+
+    res.json(user[0]);
+  } catch (error) {
+    console.error("שגיאה בשליפת פרטי המשתמש:", error);
+    res.status(500).json({ message: "שגיאה בשליפת פרטי המשתמש", error: error.message });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  try {
+    const [result] = await db.query("UPDATE orders SET status = ? WHERE id = ?", [status, id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "הזמנה לא נמצאה" });
+    }
+
+    res.json({ message: "סטטוס ההזמנה עודכן בהצלחה" });
+  } catch (error) {
+    console.error("שגיאה בעדכון הסטטוס:", error);
+    res.status(500).json({ message: "שגיאה בעדכון הסטטוס", error: error.message });
+  }
+});
+
 
 module.exports = router;
