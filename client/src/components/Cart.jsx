@@ -49,14 +49,59 @@ const Cart = () => {
     setShowCart(!showCart);
   };
 
+  // const checkout = async () => {
+  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  //   if (!userInfo || !userInfo.id || !userInfo.username || !userInfo.phone) {
+  //     alert("אנא התחבר לפני ביצוע הזמנה");
+  //     return;
+  //   }
+
+  //   const orderData = {
+  //     userId: userInfo.id,
+  //     username: userInfo.username,
+  //     phone: userInfo.phone,
+  //     totalPrice: TotalPayable,
+  //     items: cart,
+  //   };
+
+  //   try {
+  //     console.log("orderData =>", orderData);
+
+  //     // שליחת ההזמנה לשרת
+  //     await axios.post("http://localhost:3001/api/orders", orderData);
+
+  //     alert("ההזמנה נשמרה בהצלחה!");
+  //     localStorage.removeItem("cart");
+  //     setCart([]); // ריקון העגלה
+
+  
+      
+
+  //     // יצירת ה-PDF
+  //     const blob = await pdf(<OrderPDF orderData={orderData} />).toBlob();
+
+  //     // הורדת ה-PDF אוטומטית
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = `Order_${orderData.userId}.pdf`;
+  //     link.click();
+  //     URL.revokeObjectURL(link.href); // ניקוי ה-URL כדי למנוע זליגת זיכרון
+  //   } catch (error) {
+  //     console.error("שגיאה בשמירת ההזמנה:", error.response || error);
+  //     alert("אירעה שגיאה. נסה שוב מאוחר יותר.");
+  //   }
+  // };
+
+
   const checkout = async () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
+  
     if (!userInfo || !userInfo.id || !userInfo.username || !userInfo.phone) {
       alert("אנא התחבר לפני ביצוע הזמנה");
       return;
     }
-
+  
     const orderData = {
       userId: userInfo.id,
       username: userInfo.username,
@@ -64,37 +109,34 @@ const Cart = () => {
       totalPrice: TotalPayable,
       items: cart,
     };
-
+  
     try {
       console.log("orderData =>", orderData);
-
-      // שליחת ההזמנה לשרת
-      await axios.post("http://localhost:3001/api/orders", orderData);
-
+  
+      // יצירת ה-PDF
+      const blob = await pdf(<OrderPDF orderData={orderData} />).toBlob();
+  
+      // יצירת אובייקט FormData
+      const formData = new FormData();
+      formData.append("orderData", JSON.stringify(orderData)); // נתוני ההזמנה
+      formData.append("file", blob, `Order_${orderData.userId}.pdf`); // קובץ ה-PDF
+  
+      // שליחת הבקשה לשרת
+      await axios.post("http://localhost:3001/api/orders", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // חובה לציין את הפורמט הזה
+        },
+      });
+  
       alert("ההזמנה נשמרה בהצלחה!");
       localStorage.removeItem("cart");
       setCart([]); // ריקון העגלה
-
-  
-      
-
-      // יצירת ה-PDF
-      const blob = await pdf(<OrderPDF orderData={orderData} />).toBlob();
-
-      // הורדת ה-PDF אוטומטית
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `Order_${orderData.userId}.pdf`;
-      link.click();
-      URL.revokeObjectURL(link.href); // ניקוי ה-URL כדי למנוע זליגת זיכרון
     } catch (error) {
       console.error("שגיאה בשמירת ההזמנה:", error.response || error);
       alert("אירעה שגיאה. נסה שוב מאוחר יותר.");
     }
   };
-
-
-
+  
 
   return (
     <div className={`cart-container ${showCart ? "show-cart" : ""}`} dir="rtl">
