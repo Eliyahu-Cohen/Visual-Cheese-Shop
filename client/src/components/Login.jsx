@@ -1,66 +1,11 @@
 
-
-// import React, { useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-
-// const Login = () => {
-//   const [phone, setPhone] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [errorMessage, setErrorMessage] = useState('');
-//   const navigate = useNavigate();
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const response = await axios.post('http://localhost:3001/api/users/login', { phone, password });
-//       alert(response.data.message); // הודעה על התחברות מוצלחת
-//       localStorage.setItem('token', response.data.token); // שמירת טוקן
-//       navigate('/'); // מעבר לדף הבית לאחר התחברות
-//     } catch (error) {
-//       setErrorMessage(error.response?.data?.message || 'שגיאה בשרת');
-//     }
-//   };
-
-//   return (
-//     <div className="login-container">
-//       <h2>התחברות</h2>
-//       <form onSubmit={handleLogin}>
-//         <div>
-//           <label>מספר טלפון:</label>
-//           <input
-//             type="text"
-//             value={phone}
-//             onChange={(e) => setPhone(e.target.value)}
-//             required
-//           />
-//         </div>
-//         <div>
-//           <label>סיסמה:</label>
-//           <input
-//             type="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             required
-//           />
-//         </div>
-//         {errorMessage && <p className="error-message">{errorMessage}</p>}
-//         <button type="submit">כניסה</button>
-//       </form>
-//       <p className="register-prompt">
-//         משתמש חדש? <Link to="/register">הירשם כאן</Link>
-//       </p>
-//     </div>
-//   );
-// };
-
-// export default Login;
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from './UserContext';
 
 const Login = () => {
+  const { login } = useUser();
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -71,11 +16,15 @@ const Login = () => {
 
     try {
       const response = await axios.post('http://localhost:3001/api/users/login', { phone, password });
-      alert(response.data.message); // הודעה על התחברות מוצלחת
+      alert(response.data.message);
       localStorage.setItem('token', response.data.token); // שמירת טוקן
-      localStorage.setItem('userInfo', JSON.stringify(response.data.userInfo));
-      console.log(response.data.userInfo);
-      
+      login(response.data.userInfo); // עדכון המידע על המשתמש ב-Context
+
+      if( response.data.userInfo.userType === 'manager'){
+        navigate('/homePageAdmin'); // תפוס את הדרך ל
+        return; // עצור כאן כדי לא לעבור שוב לדף '/'
+
+      }
 
       navigate('/'); // מעבר לדף הבית לאחר התחברות
     } catch (error) {

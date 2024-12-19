@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const AdminUsers = () => {
@@ -43,6 +44,7 @@ const AdminUsers = () => {
 
   return (
     <div className="admin-users">
+    <Link to="/homePageAdmin">לחזרה לדף ניהול</Link>
 
 
       <h2>ניהול משתמשים</h2>

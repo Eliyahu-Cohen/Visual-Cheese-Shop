@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function AdminPage() {
@@ -7,6 +8,7 @@ function AdminPage() {
   const [categoryName, setCategoryName] = useState("");
   const [subCategoryName, setSubCategoryName] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [selectedSubCategoryId, setSelectedSubCategoryId] = useState("");
   const [productDetails, setProductDetails] = useState({
     manufacturer: "",
     name: "",
@@ -80,10 +82,53 @@ function AdminPage() {
     }
   };
 
+  // Delete category
+  const handleDeleteCategory = async () => {
+    if (!selectedCategoryId) {
+      alert("אנא בחר קטגוריה למחיקה");
+      return;
+    }
+
+    try {
+      await axios.delete(
+        `http://localhost:3001/api/categories/${selectedCategoryId}`
+      );
+      alert("קטגוריה נמחקה בהצלחה!");
+      setCategories(
+        categories.filter((category) => category.id !== selectedCategoryId)
+      );
+    } catch (error) {
+      console.error("Error deleting category:", error);
+    }
+  };
+
+  // Delete subcategory
+  const handleDeleteSubCategory = async () => {
+    if (!selectedSubCategoryId) {
+      alert("אנא בחר תת-קטגוריה למחיקה");
+      return;
+    }
+
+    try {
+      await axios.delete(
+        `http://localhost:3001/api/subcategories/${selectedSubCategoryId}`
+      );
+      alert("תת-קטגוריה נמחקה בהצלחה!");
+      setSubCategories(
+        subCategories.filter(
+          (subCategory) => subCategory.id !== selectedSubCategoryId
+        )
+      );
+    } catch (error) {
+      console.error("Error deleting subcategory:", error);
+    }
+  };
+
   return (
     <div className="admin-page">
-      <h2>דף ניהול מוצרים וקטגוריות</h2>
+    <Link to="/homePageAdmin">לחזרה לדף ניהול</Link>
 
+      <h2>דף ניהול מוצרים וקטגוריות</h2>
       {/* טופס להוספת קטגוריה */}
       <div className="form-section">
         <h3 className="section-title">הוספת קטגוריה</h3>
@@ -98,7 +143,6 @@ function AdminPage() {
           הוסף קטגוריה
         </button>
       </div>
-
       {/* טופס להוספת תת-קטגוריה */}
       <div className="form-section">
         <h3 className="section-title">הוספת תת-קטגוריה</h3>
@@ -125,8 +169,44 @@ function AdminPage() {
           הוסף תת-קטגוריה
         </button>
       </div>
-
-      {/* טופס להוספת מוצר */}
+      <div className="form-section">
+        <h3 className="section-title">מחיקת קטגוריה</h3>
+        <select
+          className="select-field"
+          value={selectedCategoryId}
+          onChange={(e) => setSelectedCategoryId(e.target.value)}
+        >
+          <option value="">בחר קטגוריה למחיקה</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        <button className="submit-button" onClick={handleDeleteCategory}>
+          מחק קטגוריה
+        </button>
+      </div>
+      {/* Delete SubCategory */}
+      <div className="form-section">
+        <h3 className="section-title">מחיקת תת-קטגוריה</h3>
+        <select
+          className="select-field"
+          value={selectedSubCategoryId}
+          onChange={(e) => setSelectedSubCategoryId(e.target.value)}
+        >
+          <option value="">בחר תת-קטגוריה למחיקה</option>
+          {subCategories.map((subCategory) => (
+            <option key={subCategory.id} value={subCategory.id}>
+              {subCategory.name}
+            </option>
+          ))}
+        </select>
+        <button className="submit-button" onClick={handleDeleteSubCategory}>
+          מחק תת-קטגוריה
+        </button>
+      </div>
+      טופס להוספת מוצר
       <div className="form-section">
         <h3 className="section-title">הוספת מוצר</h3>
         <input
@@ -204,15 +284,7 @@ function AdminPage() {
             })
           }
         />
-        <input
-          type="text"
-          className="input-field"
-          placeholder="ברקוד"
-          value={productDetails.barcode}
-          onChange={(e) =>
-            setProductDetails({ ...productDetails, barcode: e.target.value })
-          }
-        />
+ 
         <input
           type="text"
           className="input-field"

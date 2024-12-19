@@ -26,10 +26,6 @@ const UserDetails = () => {
   const handleOrder = () =>{
     navigate(`/adminOrders` )                     
   }
-
-//   const handleViewUserDetails = (userId) => {
-//     navigate(`/admin/user-details/${userId}`);
-//   };
   
 
   if (error) return <p>{error}</p>;

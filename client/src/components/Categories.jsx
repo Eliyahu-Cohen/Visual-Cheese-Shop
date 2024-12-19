@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -35,6 +34,9 @@ function Categories() {
 
   return (
     <div className="categories">
+      <Link to="/products?isOnSale=true">מבצע</Link>
+      <Link to="/products?isNew=true">חדש</Link>
+
       {categories.map((category) => (
         <div
           key={category.id}
