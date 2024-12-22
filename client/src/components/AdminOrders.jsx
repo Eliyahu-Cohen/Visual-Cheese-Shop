@@ -6,10 +6,12 @@ import { Link } from "react-router-dom"
 import { pdf } from "@react-pdf/renderer"; // ייבוא יצירת PDF
 import OrderPDF from "./OrderPDF"; // ייבוא קומפוננטת ה-PDF
 
+
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [statuses] = useState(["בהמתנה", "בביצוע", "נשלח"]); // רשימת סטטוסים
-  const navigate = useNavigate();
+  
+   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -48,6 +50,8 @@ const AdminOrders = () => {
     try {
       const response = await axios.get(`http://localhost:3001/api/orders/${order.order_id}/products`);
       const products = response.data;
+      console.log(products);
+      
 
       const formattedProducts = products.map((product) => ({
         id: product.id,
@@ -64,6 +68,7 @@ const AdminOrders = () => {
         items: formattedProducts,
       };
 
+      // const blob = await pdf(<OrderPDF orderData={orderData} userType={userInfo.userType}/>).toBlob();
       const blob = await pdf(<OrderPDF orderData={orderData} />).toBlob();
       const pdfUrl = URL.createObjectURL(blob);
       window.open(pdfUrl, "_blank");

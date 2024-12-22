@@ -189,6 +189,7 @@ router.post("/", upload.single("file"), async (req, res) => {
       [userId, username, phone, totalPrice, "בהמתנה"]
     );
     const orderId = orderResult.insertId;
+    
 
     // שמירת הפריטים בטבלת order_products
     const orderItems = items.map((item) => [
