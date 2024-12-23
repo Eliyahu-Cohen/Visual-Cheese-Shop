@@ -58,7 +58,6 @@ function HomePage() {
   }, []);
 
   return (
-    <body class="animated-background">
   <div class="home-page-container">
    
    <h2 className="welcome-message">ברוכים הבאים לחנות הבוטיק שלי</h2>
@@ -66,31 +65,7 @@ function HomePage() {
      עיין בקטגוריות שלנו ומצא את המוצרים הטובים ביותר עבורך!
      </p>
   </div>
-</body>
 
-    // <>
-    // <div className="home-page-container">
-    //   <h2 className="welcome-message">ברוכים הבאים לחנות הבוטיק שלי</h2>
-    //   <p className="intro-text">
-    //     עיין בקטגוריות שלנו ומצא את המוצרים הטובים ביותר עבורך!
-    //   </p>
-     
-    // </div>
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // <br />
-    // </>
   );
 }
 

@@ -41,7 +41,11 @@ const UserDetails = () => {
       <p>טלפון: {user.phone}</p>
       <p>כתובת: {user.address}</p>
       <p>סוג משתמש: {user.userType}</p>
-      <p>תאריך יצירה: {new Date(user.created_at).toLocaleString()}</p>
+      <p>
+  תאריך יצירה: {new Date(user.created_at).toLocaleDateString()} <br /> 
+  שעה: {new Date(user.created_at).toLocaleTimeString()}
+</p>
+
 
       <button onClick={handleOrder}>לחזרה</button>
     </div>

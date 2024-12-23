@@ -178,10 +178,12 @@ router.get("/:orderId/products", async (req, res) => {
 // שמירת הזמנה
 router.post("/", upload.single("file"), async (req, res) => {
   try {
-    const { userId, username, phone, totalPrice, items } = JSON.parse(req.body.orderData);
+    const { userId, username, userType , phone, totalPrice, items } = JSON.parse(req.body.orderData);
 
     // גישה לקובץ ה-PDF
     const pdfFile = req.file;
+
+
 
     // שמירת ההזמנה בטבלה
     const [orderResult] = await db.query(
@@ -190,15 +192,18 @@ router.post("/", upload.single("file"), async (req, res) => {
     );
     const orderId = orderResult.insertId;
     
+  // בחירת המחיר לפי סוג המשתמש
+const orderItems = items.map((item) => {
+  const price = userType === "business" ? item.businessPrice : item.regularPrice;
 
-    // שמירת הפריטים בטבלת order_products
-    const orderItems = items.map((item) => [
-      orderId,
-      item.id,
-      item.name,
-      item.regularPrice,
-      item.quantity,
-    ]);
+  return [
+    orderId,
+    item.id,
+    item.name,
+    price, // המחיר המתאים לפי סוג המשתמש
+    item.quantity,
+  ];
+});
 
     await db.query(
       "INSERT INTO order_products (order_id, product_id, product_name, product_price, quantity) VALUES ?",
@@ -264,7 +269,7 @@ router.post("/", upload.single("file"), async (req, res) => {
     // const to = req.body.email ; // כתובת המייל של הלקוח
 
     await sendEmail(to, emailSubject, "", emailHtml, {
-      filename: `Order_${userId}.pdf`,
+      filename: `דף הזמנה.pdf`,
       content: pdfFile?.buffer || "",
       contentType: "application/pdf",
     });
@@ -541,27 +546,27 @@ router.post("/", upload.single("file"), async (req, res) => {
 //   }
 // });
 
-// router.get("/user-details/:id", async (req, res) => {
-//   const { id } = req.params;
+router.get("/user-details/:id", async (req, res) => {
+  const { id } = req.params;
 
-//   try {
-//     const [user] = await db.query(
-//       "SELECT id, username, email, phone, address, userType, created_at FROM users WHERE id = ?",
-//       [id]
-//     );
+  try {
+    const [user] = await db.query(
+      "SELECT id, username, email, phone, address, userType, created_at FROM users WHERE id = ?",
+      [id]
+    );
 
-//     if (!user.length) {
-//       return res.status(404).json({ message: "משתמש לא נמצא" });
-//     }
+    if (!user.length) {
+      return res.status(404).json({ message: "משתמש לא נמצא" });
+    }
 
-//     res.json(user[0]);
-//   } catch (error) {
-//     console.error("שגיאה בשליפת פרטי המשתמש:", error);
-//     res
-//       .status(500)
-//       .json({ message: "שגיאה בשליפת פרטי המשתמש", error: error.message });
-//   }
-// });
+    res.json(user[0]);
+  } catch (error) {
+    console.error("שגיאה בשליפת פרטי המשתמש:", error);
+    res
+      .status(500)
+      .json({ message: "שגיאה בשליפת פרטי המשתמש", error: error.message });
+  }
+});
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;

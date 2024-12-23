@@ -33,8 +33,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">התחברות</h2>
+<div className="login-container mediterranean-theme">
+<h2 className="login-title">התחברות</h2>
       <form className="login-form" onSubmit={handleLogin}>
         <div className="login-field">
           <label htmlFor="phone-input" className="login-label">מספר טלפון:</label>

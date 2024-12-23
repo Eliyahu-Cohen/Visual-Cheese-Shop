@@ -34,9 +34,6 @@ function Categories() {
 
   return (
     <div className="categories">
-      <Link to="/products?isOnSale=true">מבצע</Link>
-      <Link to="/products?isNew=true">חדש</Link>
-
       {categories.map((category) => (
         <div
           key={category.id}
@@ -64,6 +61,12 @@ function Categories() {
           )}
         </div>
       ))}
+      <div className="category-item">
+      <Link to="/products?isOnSale=true">מבצע</Link>
+</div>
+      <div className="category-item">
+      <Link to="/products?isNew=true">חדש</Link>
+</div>
     </div>
   );
 }

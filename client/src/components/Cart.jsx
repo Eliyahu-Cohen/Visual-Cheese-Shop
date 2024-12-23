@@ -274,17 +274,12 @@ const Cart = () => {
       return;
     }
 
-    const filteredItems = cart.map((item) => ({
-          id: item.id,
-          name: item.name,
-          regularPrice: item.regularPrice,
-          quantity: item.quantity,
-        }));
-console.log(cart);
+   
 
     const orderData = {
       userId: userInfo.id,
       username: userInfo.username,
+      userType: userInfo.userType,
       phone: userInfo.phone,
       totalPrice: TotalPayable,
       items: cart,

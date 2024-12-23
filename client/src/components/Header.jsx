@@ -58,29 +58,32 @@ function Header() {
   return (
     <header className="Rectangle_header">
       <div className="Rectangle_header__search-1">
-        <div className="item_left1">
-          <Link to="/cart">צפייה בסל הקניות</Link>
-        </div>
-        <div className="item_center1">
-        <img
-          className="item_center"
-          src="https://www.picshare.co.il/m_pictures/img164331.jpg"
-          alt="לוגו חברה"
-        />
-        </div>
-        <div className="item_right1">
-          {userInfo && userInfo.userType === "manager" && (
-            <Link to="/homePageAdmin">לצפיה בדף ניהול</Link>
-          )}
-          {userInfo ? (
-            <button className="logout" onClick={logout}>
-              התנתק
-            </button>
-          ) : (
-            <Link to="/login">התחבר</Link>
-          )}
-        </div>
-      </div>
+  <div className="item_left1">
+    <Link to="/cart">צפייה בסל הקניות</Link>
+  </div>
+  <div className="item_center1">
+    <img
+      src="https://www.picshare.co.il/m_pictures/img164331.jpg"
+      alt="לוגו חברה"
+    />
+  </div>
+  <div className="item_right1">
+  {userInfo && userInfo.userType === "manager" && (
+    <Link to="/homePageAdmin" className="admin-link">
+      לצפיה בדף ניהול
+    </Link>
+  )}
+  {userInfo ? (
+    <button className="logout" onClick={logout}>
+      התנתק
+    </button>
+  ) : (
+    <Link to="/login">התחבר</Link>
+  )}
+</div>
+
+</div>
+
       <div className="Rectangle_header__search-2">
         <div className="item_left2">  
                   {userInfo && <p className="hallow">שלום {userInfo.username} </p>}

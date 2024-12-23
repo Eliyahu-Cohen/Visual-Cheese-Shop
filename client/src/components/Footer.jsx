@@ -1,14 +1,13 @@
 import React from 'react';
-import Categories from './Categories';
+import CategoriesFootr from './CategoriesFootr';
 
 function Footer() {
   return (
     <footer className='footer'>
-      <Categories/>
+      <CategoriesFootr/>
       <ul>
         <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        {/* You could also map through subcategories here */}
       </ul>
     </footer>
   );

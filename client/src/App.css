@@ -1,1814 +1,2487 @@
-
-header {
-  background: linear-gradient(to right, #f2eee6, #e5d9ce);
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
+עיצוב לדף  Style CSS for Login Component
+/* הגדרת משתנים לצבעים */
+:root {
+  --color-background: #F0F8FF; /* רקע תכלת בהיר */
+  --color-primary: #00BFFF; /* כחול שמיים */
+  --color-secondary: #4682B4; /* כחול ימי */
+  --color-accent: #87CEEB; /* תכלת שמיים */
+  --color-highlight: #E0FFFF; /* תכלת בהיר מאוד */
+  --color-text: #2F4F4F; /* טקסט כחול כהה */
+  --color-error: #FF4500; /* אדום להודעות שגיאה */
 }
 
-.footer{
-  background: linear-gradient(to right, #f2eee6, #e5d9ce);
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* מיכל מרכזי */
+.login-container {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid var(--color-accent);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo img {
-  width: 100px;
-  height: auto;
+.login-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-nav {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* כותרת */
+.login-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-nav li {
-  margin-right: 20px;
+/* טופס התחברות */
+.login-form {
+  width: 100%;
 }
 
-nav a {
-  color: #9a7349; /* Warm brown */
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+.login-field {
+  margin-bottom: 1rem;
+  text-align: left;
 }
 
-nav a:hover {
-  color: #775939; /* Darker brown on hover */
-}
-.categories {
-  padding: 20px;
-}
-
-.categories ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.login-label {
+  display: block;
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
 }
 
-.categories li {
-  display: inline-block;
-  margin-right: 15px;
-  padding: 5px 10px;
-  border: 1px solid #ddd; /* Light gray border */
+.login-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
   border-radius: 5px;
-  transition: background-color 0.2s ease-in-out;
+  font-size: 1rem;
+  background-color: var(--color-highlight);
+  color: var(--color-text);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.categories a {
-  color: inherit;
-  text-decoration: none;
+.login-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 5px var(--color-accent);
 }
 
-.categories li:hover {
-  background-color: #f2eee6; /* Lighter background on hover */
-}
-
-.products {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 20px;
-}
-
-.product-card {
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px;
+/* כפתור התחברות */
+.login-button {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: 1rem;
+  border: none;
   border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-highlight);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* הודעת שגיאה */
+.error-message {
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* טקסט רישום */
+.register-prompt {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.register-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  color: var(--color-secondary);
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .login-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-title {
+    font-size: 1.2rem;
+  }
+
+  .login-button {
+    font-size: 0.8rem;
+  }
+}
+
+
+
+
+/*   Register עיצוב לדף  Style CSS for  Component */
+
+/* הגדרת צבעים ופלטת צבעים */
+:root {
+  --color-background: #ffffff; /* לבן נקי */
+  --color-primary: #add8e6; /* תכלת */
+  --color-secondary: #4682b4; /* כחול כהה */
+  --color-accent: #5f9ea0; /* כחול ירקרק */
+  --color-text: #333333; /* טקסט כהה */
+  --color-error: #ff6b6b; /* אדום שגיאה */
+  --color-success: #32cd32; /* ירוק בהיר להצלחה */
+  --color-link: #1e90ff; /* כחול בהיר לקישורים */
+}
+
+/* מיכל עיקרי */
+.register-container {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid var(--color-accent);
   text-align: center;
 }
 
-.product-card img {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Crop or cover image */
+/* כותרת */
+.register-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
 }
 
-.product-card h3 {
-  margin: 10px 0;
-  font-size: 1.2rem;
-}
-
-.product-card p {
-  margin-bottom: 10px;
-}
-
-.item_center{
-
-  height: 50px;
-  width: auto; 
-  border: solid 2px chartreuse;
-  border-radius: 50%;
-  }
-
-.Rectangle_header {
+/* טופס */
+.register-form {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 1rem;
 }
-/* סגנון עבור רשימת הקטגוריות */
+
+.register-label {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.register-input {
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  transition: border 0.3s;
+}
+
+.register-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* כפתור הרשמה */
+.register-button {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* הודעות שגיאה והצלחה */
+.error-message {
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.success-message {
+  color: var(--color-success);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* טקסט כניסה */
+.login-prompt {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.register-link {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  .register-title {
+    font-size: 1.7rem;
+  }
+
+  .register-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-title {
+    font-size: 1.4rem;
+  }
+
+  .register-button {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+}
+
+
+/* HomePage  עיצוב לדף  Style CSS for  Component */
+/* הגדרות צבעים לפלטת צבעים תכלת וכחול */
+:root {
+  --color-background: #F0F8FF; /* תכלת בהיר */
+  --color-primary: #ADD8E6; /* תכלת */
+  --color-secondary: #4682B4; /* כחול כהה */
+  --color-accent: #B0E0E6; /* כחול בהיר */
+  --color-text: #2F4F4F; /* אפור כהה */
+  --color-highlight: #87CEFA; /* תכלת בהיר */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* צללית עדינה */
+}
+
+/* מיכל מרכזי */
+.home-page-container {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  max-width: 80%;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  border: 1px solid var(--color-primary);
+}
+
+/* כותרת ברוכים הבאים */
+.welcome-message {
+  font-size: 2rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* טקסט פנימי */
+.intro-text {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* כפתור שמזמין את המשתמש לבחון את הקטגוריות */
+.view-categories-button {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+}
+
+.view-categories-button:hover {
+  background-color: var(--color-highlight);
+  color: var(--color-background);
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .home-page-container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .welcome-message {
+    font-size: 1.7rem;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+  }
+
+  .view-categories-button {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page-container {
+    padding: 1rem;
+  }
+
+  .welcome-message {
+    font-size: 1.4rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
+  .view-categories-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+/*   header עיצוב לדף  Style CSS for Login Component */
+/* הגדרת צבעים */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #00bfff; /* כחול תכלת */
+  --color-accent: #87ceeb; /* כחול בהיר */
+  --color-text: #333333; /* צבע טקסט כהה */
+  --color-light: #ffffff; /* לבן */
+  --color-border: #d3d3d3; /* אפור בהיר */
+  --color-hover: #add8e6; /* כחול בהיר להדגשה */
+  --color-button: #4682b4; /* כחול כהה */
+  --color-button-hover: #5f9ea0; /* כחול ירקרק כהה */
+}
+
+
+.Rectangle_header__search-1 {
+  display: flex;
+  justify-content: space-between; /* ריווח אוטומטי בין האלמנטים */
+  align-items: center; /* יישור אנכי */
+  padding: 10px 20px; /* ריווח פנימי משני הצדדים */
+  background-color: #f5f5f5; /* צבע רקע */
+  border-bottom: 2px solid #007ACC; /* קו תחתון */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* צל */
+}
+
+.item_left1,
+.item_center1,
+.item_right1 {
+  flex: 1; /* כל אלמנט תופס מרחב שווה */
+  text-align: center; /* יישור תוכן במרכז */
+}
+
+.item_center1 img {
+  max-height: 150px;
+    border-radius: 50%;
+    border: solid 5px var(--color-accent);
+  object-fit: contain;
+}
+
+.item_right1 a {
+  text-decoration: none; /* הסרת קו תחתון */
+  color: #007ACC; /* צבע בסיס */
+  font-weight: bold; /* טקסט מודגש */
+  font-size: 1rem; /* גודל טקסט */
+  padding: 5px 10px; /* רווח פנימי */
+  border: 2px solid #007ACC; /* מסגרת דקה */
+  border-radius: 5px; /* פינות מעוגלות */
+  transition: all 0.3s ease; /* מעבר חלק */
+}
+
+.item_right1 a:hover {
+  background-color: #6bb2e2; /* צבע רקע בעת ריחוף */
+  color: white; /* צבע טקסט לבן */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* הוספת צל */
+  transform: scale(1.05); /* הגדלה קלה */
+}
+
+.item_left1 a {
+  text-decoration: none; /* הסרת קו תחתון */
+  color: #007ACC; /* צבע בסיס */
+  font-weight: bold; /* טקסט מודגש */
+  font-size: 1rem; /* גודל טקסט */
+  padding: 5px 10px; /* רווח פנימי */
+  border: 2px solid #007ACC; /* מסגרת דקה */
+  border-radius: 5px; /* פינות מעוגלות */
+  transition: all 0.3s ease; /* מעבר חלק */
+}
+
+.item_left1 a:hover {
+  background-color: #5bafe7; /* צבע רקע בעת ריחוף */
+  color: white; /* צבע טקסט לבן */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* הוספת צל */
+  transform: scale(1.05); /* הגדלה קלה */
+}
+
+.item_left1 a,
+.item_right1 a {
+  text-decoration: none; /* הסרת קו תחתון */
+  color: #007ACC; /* צבע קישורים */
+  font-weight: bold; /* טקסט מודגש */
+  font-size: 1rem;
+}
+
+.item_left1 a:hover,
+.item_right1 a:hover {
+  color: #005F99; /* צבע בעת ריחוף */
+}
+
+.logout {
+  background-color: #FF5A5F; /* צבע אדום לכפתור התנתקות */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #FF3B3F;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .Rectangle_header__search-1 {
+    flex-wrap: wrap; /* האלמנטים יסתדרו בשורות */
+    text-align: center;
+    padding: 10px;
+  }
+
+  .item_left1,
+  .item_center1,
+  .item_right1 {
+    flex: none; /* ביטול חלוקה שווה */
+    width: 100%; /* האלמנטים יתפסו את כל רוחב השורה */
+    margin-bottom: 10px; /* רווח בין האלמנטים */
+  }
+
+  .item_center1 img {
+    max-height: 30px; /* התאמת גודל התמונה */
+  }
+}
+
+.Rectangle_header__search-2 {
+  display: flex; /* שימוש ב-Flexbox */
+  flex-direction: row-reverse; /* מסדר את האלמנטים מימין לשמאל */
+  align-items: center; /* ממרכז את האלמנטים אנכית */
+  justify-content: space-between; /* יוצר רווחים אוטומטיים בין האלמנטים */
+  padding: 10px;
+  background-color: #f0f8ff; /* צבע רקע */
+  border: 1px solid #d3d3d3; /* מסגרת עדינה */
+  border-radius: 8px; /* פינות עגולות */
+}
+
+.item_left2,
+.item_center2,
+.item_right2 {
+  flex: 1; /* כל אלמנט יקבל מקום שווה */
+  padding: 0 10px; /* רווח פנימי */
+}
+
+
+.Rectangle_header__search-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f7f7f7; /* רקע בהיר */
+  border-bottom: 2px solid #e0e0e0; /* קו דק בצבע ניטרלי */
+}
+
+.item_left2 p.hallow {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+}
+
+.item_right2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Rectangle_header__search-2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f4f4; /* רקע בהיר ועדין */
+  border-radius: 10px; /* פינות מעוגלות */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל קל */
+  margin: 10px 0;
+}
+
+.item_left2 {
+  display: flex;
+  align-items: center;
+}
+
+.hallow {
+  font-size: 1.2rem; /* גודל טקסט מתאים */
+  color: #333; /* צבע כהה ונעים לקריאה */
+  font-weight: 500; /* משקל טקסט בינוני */
+  background-color: #fffbf1; /* צבע רקע עדין להבלטה */
+  padding: 8px 12px; /* רווח פנימי */
+  border-radius: 20px; /* פינות מעוגלות */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* צל קל */
+  transition: all 0.3s ease; /* מעבר חלק */
+}
+
+.hallow:hover {
+  background-color: #f0e5a1; /* שינוי צבע רקע בעת ריחוף */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל חזק יותר */
+}
+
+.search-input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 250px; /* גודל סביר לשדה חיפוש */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007ACC; /* צבע גבול בהיר כשתוך כדי חיפוש */
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  list-style-type: none;
+  padding: 0;
+  z-index: 10;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggestion-item:hover {
+  background-color: #f1f1f1; /* צבע רקע משתנה בהעברה מעל אלמנט */
+}
+
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.suggestion-item:hover {
+  background-color: #e6f7ff;
+}
+
+
+
+
+
+
+/*  עיצוב לקטגוריות ותתי קטגוריות */
 .categories {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap; /* מאפשר קטגוריות לעבור שורה במקרה הצורך */
+  justify-content: space-between; /* ריווח אחיד בין האלמנטים */
   padding: 10px;
+  direction: rtl; /* תמיכה בעברית */
+  gap: 20px; /* ריווח בין שורות */
 }
 
-/* סגנון עבור כל קטגוריה */
+/* קטגוריה ראשית */
 .category-item {
-  position: relative;
+  position: relative; /* לשימוש עם תתי הקטגוריות */
+  flex: 1 1 calc(20% - 20px); /* גודל דינמי לאלמנטים: 20% מהרוחב, עם ריווח */
+  max-width: 200px; /* מגבלת רוחב */
+  min-width: 150px; /* מינימום רוחב */
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* תתי-הקטגוריות כאלמנטים מוסתרים, שיוצגו במעבר עכבר */
+.category-item:hover {
+  background-color: #eaeaea;
+  transform: scale(1.05); /* אפקט זום */
+}
+
+/* תתי קטגוריות */
 .subcategories {
-  display: none;
   position: absolute;
-  top: 100%; /* מציג את התפריט מתחת לקטגוריה */
-  left: 0;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  top: 100%; /* הצגה מתחת לקטגוריה */
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
   padding: 10px;
-  min-width: 150px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* הצגת תתי-הקטגוריות במעבר עכבר */
-.category-item:hover .subcategories {
-  display: block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .subcategories a {
   display: block;
   padding: 5px 10px;
-  color: #333;
+  color: #007ACC;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .subcategories a:hover {
-  background-color: #ddd;
+  background-color: #f0f8ff;
 }
 
-.item_right {
-  font-size: 16px;
-  color: #333;
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .category-item {
+    flex: 1 1 calc(33.33% - 20px); /* 3 אלמנטים בשורה */
+  }
+}
+
+@media (max-width: 480px) {
+  .category-item {
+    flex: 1 1 calc(50% - 20px); /* 2 אלמנטים בשורה */
+  }
+}
+
+
+
+/*  Footer עיצוב לדף  Style CSS for Login Component */
+
+
+/* הגדרת צבעים עיקריים */
+:root {
+  --color-background: #f0f9ff; /* תכלת בהיר */
+  --color-primary: #5f9ea0; /* כחול אפור */
+  --color-accent: #4682b4; /* כחול בינוני */
+  --color-hover: #1e90ff; /* כחול בהיר */
+  --color-text: #333333; /* טקסט כהה */
+  --color-link: #4682b4; /* צבע קישור */
+  --color-link-hover: #1e90ff; /* קישור בריחוף */
+}
+
+/* Footer - המיכל הכללי */
+.footer {
+  background-color: var(--color-background);
+  padding: 2rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--color-primary);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* סגנון הקטגוריות בתוך ה-footer */
+.footer .categories {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer .categories a {
   text-decoration: none;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer .categories a:hover {
+  color: var(--color-hover);
+}
+
+/* סגנון רשימת קישורים */
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: var(--color-link);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: var(--color-link-hover);
+}
+
+/* אלמנטים עיצוביים לקווים דקים וצלליות */
+.footer {
+  border-top: 2px solid var(--color-primary);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer .categories {
+    margin-bottom: 1rem;
+  }
+
+  .footer ul {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .footer ul li {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 3%;
+  }
+
+  .footer ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer ul li a {
+    font-size: 0.9rem;
+  }
+
+  .footer .categories a {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/*   עיצוב לדף סל הקניות Style CSS for Login Component */
+
+/* סגנון כללי לפלטת צבעים כחול-תכלת */
+:root {
+  --color-background: #F1F9FF; /* תכלת בהיר */
+  --color-primary: #00A9E0; /* תכלת חזק */
+  --color-secondary: #4F8CB0; /* כחול כהה */
+  --color-accent: #A2D9E7; /* כחול בהיר יותר */
+  --color-hover: #0099CC; /* כחול כהה להחלקה */
+  --color-text: #333333; /* טקסט כהה */
+  --color-overlay: rgba(0, 0, 0, 0.3); /* שחור שקוף לסרגל הצידה */
+  --color-button-bg: #00A9E0; /* כפתור תכלת */
+  --color-button-hover: #007B9D; /* כפתור תכלת כהה בהחלקה */
+  --color-error: #FF6B6B; /* אדום שגיאה */
+}
+
+/* מיכל סל קניות */
+.cart-container {
+  position: relative;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--color-background);
+}
+
+.cart-toggle-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-toggle-btn:hover {
+  background-color: var(--color-hover);
+}
+
+/* סל קניות פתוח */
+.cart-container.show-cart .cart-items {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* סרגל הצד */
+.cart-items {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background-color: white;
+  border-left: 2px solid var(--color-secondary);
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.cart-container.show-cart {
+  background-color: var(--color-overlay);
+  z-index: 998;
+}
+
+/* כותרת סל קניות */
+.cart-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* פריט בעגלה */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.cart-item-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item-info {
+  display: flex;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.cart-item-description h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.cart-item-description p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+}
+
+.cart-item-total p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.cart-item-quantity button {
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  background-color: rgb(49, 184, 238);
+  cursor: pointer;
+}
+
+.cart-item-quantity button:hover {
+  background-color: var(--color-accent);
+}
+
+/* כפתור הסרה */
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-error);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* סיכום סל */
+.cart-summary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cart-summary h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  background-color: var(--color-button-bg);
+  color: white;
+  border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  transition: background-color 0.3s;
-  flex: 1;
-  padding: 10px; /* מוסיף רווח פנימי לכל אלמנט */
-}
-.item_right a:hover {
-  background-color: #4CAF50;
-  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.item_right a:active {
-  background-color: #45a049;
+.checkout-btn:hover {
+  background-color: var(--color-button-hover);
 }
 
-.item_left {
-  flex: 1;
-  padding: 10px; /* מוסיף רווח פנימי לכל אלמנט */
-}
-/* עיצוב כולל עבור עמוד ניהול */
-.admin-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f7fa;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .cart-items {
+    width: 60%;
+  }
 }
 
-/* כותרת ראשית */
-.admin-page h2 {
-  text-align: center;
-  color: #333;
-  font-weight: 600;
+@media (max-width: 480px) {
+  .cart-items {
+    width: 80%;
+  }
 }
 
-/* כותרות החלקים */
-.section-title {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
+/*  products עיצוב לדף  Style CSS for Login Component */
+/* הגדרת צבעים */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #1e90ff; /* כחול תכלת */
+  --color-secondary: #87cefa; /* תכלת כהה */
+  --color-accent: #ff6347; /* אדום זוהר */
+  --color-text: #333; /* טקסט כהה */
+  --color-text-light: #fff; /* טקסט בהיר */
+  --color-sale: #ff4500; /* כתום-אדום */
+  --color-new: #32cd32; /* ירוק */
 }
 
-/* תיבה כללית לעיצוב טפסים */
-.form-section {
-  margin: 20px 0;
-  padding: 15px;
-  background-color: #ffffff;
-  border-radius: 6px;
-  border: 1px solid #e0e4e8;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+/* מיכל של כל המוצרים */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  margin-top: 5rem;
+  background-color: var(--color-background);
+  position: relative;
 }
 
-/* תיבות קלט */
-.input-field, .select-field {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 15px;
-  font-size: 1em;
-  color: #333;
-  border: 1px solid #cfd4d9;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-.input-field:focus, .select-field:focus {
-  outline: none;
-  border-color: #4a90e2;
-}
-
-/* כפתור */
-.submit-button {
-  display: inline-block;
+/* הודעת הוספה לסל */
+.cart-message {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
   padding: 10px 20px;
-  background-color: #4a90e2;
-  color: white;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: cartMessageAnim 3s forwards;
+}
+
+/* אנימציה להודעת הוספה לסל */
+@keyframes cartMessageAnim {
+  0% {
+    top: 10%;
+    opacity: 1;
+  }
+  100% {
+    top: -10%;
+    opacity: 0;
+  }
+}
+
+/* כרטיסיית מוצר */
+.product-card {
+  background-color: var(--color-text-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* ריבוע של תמונת המוצר */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* באנדרים */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 5px;
   font-weight: bold;
+}
+
+.badge-sale {
+  background-color: var(--color-sale);
+}
+
+.badge-new {
+  background-color: var(--color-new);
+}
+
+/* שם המוצר */
+.product-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-top: 0.8rem;
+}
+
+/* פרטי המוצר */
+.product-manufacturer, .product-weight, .product-price {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+}
+
+/* כפתור הוספה לסל */
+.add-to-cart-button {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 10px 20px;
+  font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-to-cart-button:hover {
+  background-color: var(--color-accent);
+}
+
+/* אנימציה של המוצר עף לסל */
+@keyframes flyingToCart {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  30% {
+    transform: scale(1.1) translate(-10px, -10px);
+  }
+  60% {
+    transform: scale(1.2) translate(20px, -20px);
+  }
+  100% {
+    transform: scale(0.5) translate(300px, -300px); /* מיקום הסל */
+  }
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .product-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 0.9rem;
+  }
+
+  .add-to-cart-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .add-to-cart-button {
+    font-size: 0.8rem;
+  }
+}
+/*   עיצוב לדף בית של מנהל */
+/* הגדרת צבעים וסטיילים כלליים */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #00bcd4; /* כחול תכלת */
+  --color-accent: #00a1c9; /* כחול כהה יותר */
+  --color-light: #ffffff; /* לבן */
+  --color-text: #333333; /* צבע טקסט כהה */
+  --color-link: #00bcd4; /* תכלת לקישורים */
+  --color-link-hover: #0097a7; /* כחול כהה יותר בקישור בהעכבר */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* צללית עדינה */
+  --color-border: #00bcd4; /* גבול תכלת */
+}
+
+/* מיכל המרכזי */
+.homepage-admin-container {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px var(--color-shadow);
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid var(--color-border);
+}
+
+/* כותרת לוח הבקרה */
+.homepage-admin-title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* תיאור לניווט */
+.homepage-admin-description {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* מיכל הקישורים */
+.homepage-admin-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* קישורים */
+.homepage-admin-link {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 30px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+/* שינוי צבע בקישור בהעכבר */
+.homepage-admin-link:hover {
+  background-color: var(--color-accent);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .homepage-admin-container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .homepage-admin-title {
+    font-size: 2rem;
+  }
+
+  .homepage-admin-description {
+    font-size: 1rem;
+  }
+
+  .homepage-admin-link {
+    width: 200px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-admin-title {
+    font-size: 1.5rem;
+  }
+
+  .homepage-admin-description {
+    font-size: 0.9rem;
+  }
+
+  .homepage-admin-link {
+    width: 180px;
+    font-size: 0.9rem;
+  }
+}
+
+/*   עיצוב לדף עידכון מוצר Style CSS for Login Component */
+
+
+
+/* הגדרות צבעים */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #4682b4; /* כחול כהה */
+  --color-secondary: #add8e6; /* תכלת כהה */
+  --color-highlight: #b0e0e6; /* כחול מעושן */
+  --color-text: #333333; /* טקסט כהה */
+  --color-error: #ff6b6b; /* אדום שגיאה */
+  --color-dark-bg: #2c3e50; /* רקע כהה מסביב */
+  --color-button-bg: #4682b4; /* צבע רקע לכפתור */
+  --color-button-hover: #5f9ea0; /* צבע רקע כפתור בהובר */
+}
+
+/* קונטיינר עיקרי */
+.update-product-section {
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* מסגרת לעדכון מוצר */
+.product-form {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(235, 230, 230, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-secondary);
+}
+
+/* כותרת */
+.update-product-header h2 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* תגים בשדות */
+.product-form label {
+  display: block;
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+/* שדות קלט */
+.product-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* מצב פוקוס */
+.product-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* צ'ק בוקסים */
+.checkbox-label {
+  font-size: 1rem;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* כפתורים */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.update-button,
+.delete-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
-  background-color: #357ABD;
+.update-button {
+  background-color: var(--color-button-bg);
+  color: white;
 }
 
-/* עיצוב תיבות הסימון */
+.update-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.delete-button {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #e74c3c;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .update-product-section {
+    padding: 1.5rem;
+  }
+
+  .product-form {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .update-product-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-input {
+    padding: 10px;
+  }
+
+  .update-button,
+  .delete-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* רקע כהה מסביב */
+.update-product-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark-bg);
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+
+/*  עיצוב לדף הבית למנהל* */
+/* פלטת צבעים */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #4682b4; /* כחול כהה */
+  --color-secondary: #add8e6; /* תכלת כהה */
+  --color-highlight: #b0e0e6; /* כחול מעושן */
+  --color-text: #333333; /* טקסט כהה */
+  --color-error: #ff6b6b; /* אדום שגיאה */
+  --color-dark-bg: #2c3e50; /* רקע כהה מסביב */
+  --color-button-bg: #4682b4; /* צבע רקע לכפתור */
+  --color-button-hover: #5f9ea0; /* צבע רקע כפתור בהובר */
+  --color-card-bg: white; /* רקע לבן לכרטיס */
+  --color-accent: #ff6347; /* צבע אקסנט זוהר להודעות */
+}
+
+/* קונטיינר כללי */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: var(--color-background);
+}
+
+/* הודעה שנוספה לסל */
+.cart-message {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-accent);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  z-index: 9999;
+  opacity: 0;
+  animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    top: -50px;
+  }
+  100% {
+    opacity: 1;
+    top: 10px;
+  }
+}
+
+/* כרטיס מוצר */
+.product-card {
+  background-color: var(--color-card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* תמונה של המוצר */
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+/* תגיות מבצע וחדש */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.badge-sale {
+  background-color: #ff6347; /* אדום זוהר למבצע */
+}
+
+.badge-new {
+  background-color: #32cd32; /* ירוק למוצר חדש */
+}
+
+/* שם המוצר, יצרן, משקל ומחיר */
+.product-name {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin: 10px 0;
+}
+
+.product-manufacturer,
+.product-weight {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* כפתור הוסף לסל */
+.add-to-cart {
+  margin-top: 15px;
+}
+
+.add-to-cart-button {
+  background-color: var(--color-button-bg);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.add-to-cart-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* אנימציה לעוף על התמונה */
+@keyframes flyToCart {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+  }
+  100% {
+    transform: translateY(-100vh) scale(0);
+    opacity: 0;
+  }
+}
+
+.product-image.added-to-cart {
+  animation: flyToCart 1s forwards;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .products-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+  }
+
+  .product-price {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 0.9rem;
+  }
+
+  .add-to-cart-button {
+    padding: 10px 20px;
+  }
+}
+
+
+/* עיצוב לאדמין פאג דף מנהל להספת מוצרים */
+/* Base Styles */
+.admin-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+h2, h3 {
+  font-weight: bold;
+  color: #3485a5; /* Light blue */
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  color: #3485a5;
+  margin-bottom: 10px;
+}
+
+/* Form Section */
+.form-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field, .select-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.input-field:focus, .select-field:focus {
+  border-color: #3485a5;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #3485a5;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #4a9fbf;
+}
+
+/* Checkbox Styles */
 .checkbox-label {
   display: flex;
   align-items: center;
-  font-size: 0.95em;
-  color: #555;
   margin-bottom: 10px;
 }
 
 .checkbox-input {
   margin-right: 8px;
-  accent-color: #4a90e2;
+  width: 18px;
+  height: 18px;
 }
 
-/* ריווח בין תתי קטגוריות */
-.select-field .sub-category {
-  margin-top: 5px;
-}
-/* src/components/Register.css */
-.register-form-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.register-form-title {
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.register-label {
-  font-size: 16px;
-  color: #555;
-}
-
-.register-input, .register-select {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.register-input[type="date"] {
-  padding: 8px;
-}
-
-.register-submit-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.register-submit-button:hover {
-  background-color: #45a049;
-}
-
-.register-submit-button:active {
-  background-color: #388e3c;
-}
-
-/* src/components/Header.css */
-.header-container {
-  background-color: #f8f8f8;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.nav-left, .nav-right {
-  display: flex;
-  gap: 15px;
-}
-
-.search-input {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 200px;
-  max-width: 100%;
-}
-
-.logo-img {
-  max-width: 200px;
-  margin: 10px;
-}
-
-.nav-right a {
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.nav-right a:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.nav-right a:active {
-  background-color: #45a049;
-}
-
-.categories-container {
-  margin-top: 20px;
-  background-color: #f1f1f1;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-/* src/components/Register.css */
-.register-form-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.register-form-title {
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.register-label {
-  font-size: 16px;
-  color: #555;
-}
-
-.register-input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.register-submit-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.register-submit-button:hover {
-  background-color: #45a049;
-}
-
-.register-submit-button:active {
-  background-color: #388e3c;
-}
-
-
-
-/* עיצוב כללי */
-.login-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.login-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.divider {
-  margin: 20px 0;
-  border: none;
-  height: 1px;
-  background: #ddd;
-}
-
-/* עיצוב קלטים וכפתורים */
-.input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border 0.3s ease;
-}
-
-.input:focus {
-  border: 1px solid #007bff;
-  outline: none;
-}
-
-.btn {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-/* עיצוב קלאסים ייחודיים */
-.send-otp-btn {
-  background-color: #17a2b8;
-}
-
-.verify-otp-btn {
-  background-color: #28a745;
-}
-
-.login-btn {
-  background-color: #007bff;
-}
-
-/* עיצוב קישור הרשמה */
-.register-prompt {
-  margin-top: 15px;
-  color: #555;
-}
-
-.register-link {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.register-link:hover {
-  color: #0056b3;
-}
-
-/* LoginPage.css */
-.login-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f4f7f6;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form label {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.login-form input {
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-
-.submit-btn {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.redirect-message {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-/* RegisterPage.css */
-.register-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f4f7f6;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.register-form label {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.register-form input {
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-
-.submit-btn {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.success-message {
-  color: green;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-
-/* קונטיינר של חיפוש */
-.search-container {
-  position: relative;
-  display: inline-block;
-  width: 300px;
-}
-
-/* שדה חיפוש */
-.search-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* רשימת הצעות */
-.search-suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  z-index: 1000;
-  max-height: 200px;
-  overflow-y: auto;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* פריט הצעה */
-.suggestion-item {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.suggestion-item:hover {
-  background-color: #f1f1f1;
-}
-
-
-/* Cart.css */
-.cart {
-  padding: 20px;
-}
-
-.cart h2 {
-  text-align: center;
-  color: #444;
-}
-
-.cart-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-
-.cart-table th, .cart-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.cart-table th {
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-.cart-table input[type='number'] {
-  width: 60px;
-  padding: 5px;
-  text-align: center;
-}
-
-.cart-table button {
-  padding: 5px 10px;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.cart-table button:hover {
-  background-color: #c0392b;
-}
-
-.cart-total {
-  margin-top: 20px;
-  text-align: right;
-  font-size: 1.2em;
-}
-
-/* OrderHistory.css */
-.order-history {
-  padding: 20px;
-}
-
-.order-history h2 {
-  text-align: center;
-  color: #444;
-}
-
-.history-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-
-.history-table th, .history-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.history-table th {
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-.history-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.history-table tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* UpdateOrderStatus.css */
-.update-order {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.update-order h2 {
-  text-align: center;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.update-order label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.update-order select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.update-order button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.update-order button:hover {
-  background-color: #0056b3;
-}
-
-/* עיצוב בסיסי */
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
-}
-
-.product-card {
-  width: 250px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.product-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: filter 0.3s ease;
-}
-
-.product-card:hover .product-image {
-  filter: brightness(0.8);
-}
-
-/* תגי "חדש" ו-"מבצע" */
-.badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.badge-sale {
-  background: #26db0e; /* צבע אדום */
-}
-
-.badge-new {
-  background: #ff0404; /* צבע ירוק */
-}
-
-/* מידע על המוצר */
-.product-name,
-.product-manufacturer,
-.product-weight,
-.product-price {
-  margin: 10px;
-  font-size: 14px;
-  color: #333;
-}
-
-.add-to-cart {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.add-to-cart-button {
-  background: #3498db; /* צבע כחול */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.add-to-cart-button:hover {
-  background: #2980b9;
-}
-
-/* אנימציית מעוף */
-.fly-to-cart {
-  animation: fly-to-cart-animation 0.5s ease-in-out forwards;
-}
-
-@keyframes fly-to-cart-animation {
-  0% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.5) translateY(-100px);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(0) translateY(-300px);
-    opacity: 0;
-  }
-}
-
-/* רקע מושחר */
-.product-details-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* חלונית פרטי מוצר */
-.product-details {
-  background: #fff;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  position: relative;
-  animation: modal-appear 0.3s ease-out;
-}
-
-/* אנימציה לכניסה */
-@keyframes modal-appear {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* כפתור סגירה */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #333;
-}
-
-.close-button:hover {
-  color: red;
-}
-
-/* תמונת המוצר */
-.product-image-large {
-  display: block;
-  max-width: 100%;
-  border-radius: 10px;
-  margin: 0 auto 20px auto; /* ממרכז את התמונה אופקית */
-}
-
-/* פרטי המוצר */
-.product-info {
-  text-align: center; /* ממרכז את התוכן */
-}
-
-
-.add-to-cart-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.add-to-cart-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.add-to-cart-button:hover {
-  background-color: #45a049;
-}
-
-input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  font-size: 14px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* כללי */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-/* background: linear-gradient(to right, rgb(102, 255, 0), rgb(226, 213, 35)); */
-
-background-image: url(./components/gb.webp);
-  color: #333;
-}
-
-/* קונטיינר של העגלה */
-.cart-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* כותרת העגלה */
-.cart-title {
-  font-size: 1.8rem;
-  text-align: center;
-  color: #444;
-  border-bottom: 2px solid #eaeaea;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-/* פריטים בעגלה */
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.cart-item:last-child {
-  border-bottom: none;
-}
-
-/* פרטים על הפריט */
-.cart-item-info {
-  display: flex;
-  align-items: center;
-}
-
-.cart-item-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 10px;
-}
-
-.cart-item-description h4 {
-  font-size: 1rem;
-  color: #555;
-  margin: 0;
-}
-
-.cart-item-description p {
-  font-size: 0.9rem;
-  color: #888;
-  margin: 5px 0 0 0;
-}
-
-/* מחיר וכמות */
-.cart-item-total p {
-  font-size: 1rem;
-  margin: 0;
-  color: #333;
-}
-
-.cart-item-quantity {
-  display: flex;
-  align-items: center;
-}
-
-.cart-item-quantity button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.cart-item-quantity button:hover {
-  background-color: #0056b3;
-}
-
-.cart-item-quantity button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.cart-item-quantity span {
-  margin: 0 10px;
-  font-size: 1rem;
-}
-
-/* כפתור הסרה */
-.remove-btn {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
-}
-
-.remove-btn:hover {
-  background-color: #a71d2a;
-}
-
-/* סיכום עגלה */
-.cart-summary {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.cart-summary h3 {
-  font-size: 1.5rem;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.checkout-btn {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.checkout-btn:hover {
-  background-color: #218838;
-}
-
-
-.admin-orders table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: whitesmoke;
-}
-
-.admin-orders th, .admin-orders td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-
-.admin-orders th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.admin-orders button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.admin-orders button:hover {
-  background-color: #45a049;
-}
-
-
-.cart-message {
-  position: fixed;
-  top: 10%; /* שליש עליון */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #fffbcc;
-  color: #333;
-  padding: 15px 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.admin-users {
-  padding: 20px;
-}
-.user-summary p {
-  font-weight: bold;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-table th, table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column; /* מיקום לינקים אנכי */
-  gap: 15px; /* רווח בין הלינקים */
-  padding: 20px;
-}
-
-.nav-links a {
-  text-decoration: none; /* ביטול הקו התחתון */
-  color: #fff; /* צבע טקסט */
-  background-color: #4CAF50; /* צבע רקע */
-  padding: 12px 20px; /* ריווח פנימי */
-  border-radius: 8px; /* פינות מעוגלות */
-  font-size: 18px;
-  text-align: center;
-  transition: all 0.3s ease; /* אפקט מעבר חלק */
-}
-
-.nav-links a:hover {
-  background-color: #45a049; /* צבע רקע על hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל */
-  transform: scale(1.05); /* הגדלה קלה */
-}
-
-.nav-links a:active {
-  background-color: #388e3c; /* צבע רקע על לחיצה */
-}
-
-
-
-.homepage-admin-container {
-  font-family: 'Arial', sans-serif;
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 800px;
-  text-align: center;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.homepage-admin-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.homepage-admin-description {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.homepage-admin-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.homepage-admin-link {
-  font-size: 1rem;
-  text-decoration: none;
-  color: #fff;
-  background-color: #1fd5db;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.homepage-admin-link:hover {
-  background-color: #2e8f8f;
-}
-
-.homepage-admin-link:active {
-  background-color: #0fd4c4;
-}
-
-/* General Styling for Header */
-.Rectangle_header {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #f5f5f5;
-  border-bottom: 2px solid #ddd;
-  padding: 10px 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-}
-
-/* Row Containers */
-.Rectangle_header__search-1,
-.Rectangle_header__search-2,
-.Rectangle_header__search-3 {
-  width: 800px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
-
-/* Alignment for Each Section */
-.item_left1, .item_right1, .item_left2, .item_right2 {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.item_center1 {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.item_right1 {
-  justify-content: flex-end;
-}
-
-/* Logo Styling */
-.item_center img {
-  width: 150px;
-  height: auto;
-}
-
-/* Link Styling */
+/* Hover Effects for Links */
 a {
+  color: #3485a5;
   text-decoration: none;
-  color: #007bff;
-  margin: 0 10px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-/* Button Styling */
-button.logout {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button.logout:hover {
-  background-color: #0056b3;
-}
-
-/* Search Input Styling */
-.search-container {
-  position: relative;
-}
-
-.search-input {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 250px;
-  font-size: 14px;
-}
-
-.search-suggestions {
-  position: absolute;
-  top: 40px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  list-style: none;
-  margin: 0;
-  padding: 5px 0;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.suggestion-item {
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.suggestion-item:hover {
-  background-color: #f5f5f5;
-}
-
-/* Greeting Text */
-.hallow {
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-}
-
-/* Modern Button Links */
-a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #6ddbdf;
-  color: white;
-  border-radius: 5px;
-  text-align: center;
-  margin: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 a:hover {
-  background-color: #14e91f;
-  transform: translateY(-3px);
+  text-decoration: underline;
 }
 
-/* Auto Spacing */
-.Rectangle_header__search-1 > div,
-.Rectangle_header__search-2 > div,
-.Rectangle_header__search-3 > div {
-  margin: 0 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .Rectangle_header__search-1, .Rectangle_header__search-2, .Rectangle_header__search-3 {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .item_left1, .item_center1, .item_right1,
-  .item_left2, .item_center1, .item_right2 {
-    justify-content: center;
-  }
-
-  .search-input {
-    width: 100%;
-  }
-}
-
-
-/* General Section Styling */
-.update-product-section {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-/* Header Styling */
-.update-product-header h2 {
-  text-align: center;
-  color: #333;
-}
-
-/* Form Fields */
-.product-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.product-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.product-input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-/* Buttons */
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.update-button,
-.delete-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.update-button {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.delete-button {
-  background-color: #ff4c4c;
-  color: #fff;
-}
-
-.update-button:hover {
-  background-color: #0056b3;
-}
-
-.delete-button:hover {
-  background-color: #cc0000;
-}
-
-/* Checkboxes */
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .update-product-section {
+  .admin-page {
     padding: 15px;
   }
 
-  .product-input {
-    font-size: 14px;
+  .input-field, .select-field {
+    font-size: 0.9rem;
   }
 
-  .update-button,
-  .delete-button {
-    font-size: 14px;
+  .submit-button {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 }
 
-/* סגנון כללי למיכל */
-.admin-users {
-  background-color: #ffffff; /* רקע לבן */
-  border-radius: 15px; /* פינות מעוגלות */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* צל קל */
-  padding: 20px; /* ריווח פנימי */
-  max-width: 90%; /* מגביל רוחב המיכל */
-  margin: 20px auto; /* מרכז את האלמנט בעמוד */
-  text-align: center; /* ממרכז את הטקסט */
-  font-family: "Arial", sans-serif; /* גופן מודרני */
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-section {
+    padding: 15px;
+  }
+
+  .input-field, .select-field {
+    padding: 10px;
+  }
+
+  .submit-button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Collapsible Forms */
+.form-section.collapsed {
+  display: none;
+}
+
+.form-section.expanded {
+  display: block;
+  animation: expand 0.3s ease-in-out;
+}
+
+@keyframes expand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+
+/*   עיצוב לדף ניהול הזמנות*/
+
+/* הגדרת צבעים */
+:root {
+  --color-background: #F0F8FF; /* תכלת בהיר */
+  --color-primary: #00BFFF; /* כחול תכלת */
+  --color-accent: #87CEFA; /* כחול שמיים */
+  --color-highlight: #FFD700; /* זהב */
+  --color-text: #333333; /* טקסט כהה */
+  --color-border: #B0C4DE; /* כחול בהיר, border */
+  --color-button: #00BFFF; /* כחול כהה */
+  --color-button-hover: #1E90FF; /* כחול בהיר יותר לכפתורים */
+  --color-error: #FF6B6B; /* אדום שגיאה */
+}
+
+/* מיכל עיקרי */
+.admin-orders {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid var(--color-border);
 }
 
 /* כותרת */
-.admin-users h2 {
-  font-size: 24px;
-  color: #333333;
-  margin-bottom: 20px;
+.admin-orders h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
 }
 
-/* סיכום משתמשים */
-.user-summary {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
+/* קישורים */
+.return-admin {
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 1rem;
 }
 
-.user-summary p {
-  font-size: 16px;
-  color: #555555;
-  margin: 0;
+.return-admin:hover {
+  text-decoration: underline;
 }
 
 /* טבלה */
-.admin-users table {
+table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 16px;
+  margin-bottom: 2rem;
 }
 
-.admin-users table th,
-.admin-users table td {
-  border: 1px solid #dddddd;
-  padding: 10px;
+th, td {
+  padding: 12px;
   text-align: center;
+  border: 1px solid var(--color-border);
 }
 
-.admin-users table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-  color: #333333;
+th {
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1.1rem;
 }
 
-.admin-users table tr:nth-child(even) {
-  background-color: #f9f9f9;
+td {
+  background-color: white;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* תווית סטטוס */
+td span {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 6px;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background-color: #f5f5f5;
 }
 
 /* כפתורים */
-.admin-users button {
-  background-color: #007bff; /* כחול */
+button {
+  background-color: var(--color-button);
   color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
   border: none;
-  padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
   transition: background-color 0.3s ease;
+  margin: 5px;
 }
 
-.admin-users button:hover {
-  background-color: #0056b3; /* גוון כהה יותר */
+button:hover {
+  background-color: var(--color-button-hover);
 }
 
-/* בחירת סוג משתמש */
-.admin-users select {
-  padding: 5px 10px;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  margin-right: 10px;
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .admin-orders {
+    padding: 1.5rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
 }
 
-/* קישור חזרה לדף הניהול */
+@media (max-width: 480px) {
+  .admin-orders {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  button {
+    padding: 7px 14px;
+  }
+}
+
+/*   עיצוב לדף ניהול משתמשים*/
+/* הגדרת צבעים ומחלקות בסיסיות */
+:root {
+  --color-background: #F0F8FF; /* תכלת בהיר */
+  --color-primary: #00BFFF; /* כחול טורקיז זוהר */
+  --color-secondary: #4682B4; /* כחול כהה */
+  --color-highlight: #87CEEB; /* תכלת זוהר */
+  --color-text: #2F4F4F; /* טקסט כהה */
+  --color-button: #00BFFF; /* כחול זוהר לכפתורים */
+  --color-button-hover: #1E90FF; /* כחול בהיר לכפתור ריחוף */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* צללית עדינה */
+  --color-overlay: rgba(0, 0, 0, 0.5); /* מסך שחור למחיצה */
+}
+
+/* עיצוב הכללי לדף ניהול משתמשים */
+.admin-users {
+  
+  font-family: 'Arial', sans-serif;
+  background-color: var(--color-background);
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.admin-users h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
 .admin-users a {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #007bff;
   text-decoration: none;
+  color: var(--color-primary);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .admin-users a:hover {
   text-decoration: underline;
 }
 
-/* מבנה כללי של הקונטיינר */
-.products-chart-container {
-  background-color: #ffffff;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 80%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* סיכום מספר המשתמשים */
+.user-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.user-summary p {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+}
+
+/* עיצוב טבלה */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+th {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+button {
+  background-color: var(--color-button);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* עיצוב כרטיסיית עדכון סוג משתמש */
+.updateUser {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  width: 300px;
   text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updateUser h3 {
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.updateUser select {
+  padding: 10px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.updateUser button {
+  background-color: var(--color-button);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.updateUser button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* מסך שחור להצללה */
+.updateUser-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-overlay);
+  z-index: 5;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .admin-users {
+    padding: 1rem;
+  }
+
+  .user-summary {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  .updateUser {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-users h2 {
+    font-size: 1.6rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  .updateUser {
+    width: 90%;
+  }
+}
+
+/*   עיצוב לדף ניהול נתונים על מוצרים*/
+
+/* סגנון כללי לפלטת צבעים כחולה תכלת */
+:root {
+  --color-background: #f0f8ff; /* תכלת בהיר */
+  --color-primary: #87ceeb; /* תכלת */
+  --color-secondary: #4682b4; /* כחול כהה */
+  --color-highlight: #00bfff; /* כחול זוהר */
+  --color-text: #333333; /* טקסט כהה */
+  --color-text-light: #666666; /* טקסט בהיר */
+  --color-error: #ff6347; /* אדום שגיאה */
+  --color-button: #00bfff; /* כחול בולט לכפתור */
+}
+
+/* מיכל מרכזי */
+.products-chart-container {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid var(--color-secondary);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* כותרת */
+.page-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* קישור חזרה לדף ניהול */
 .navigation-link {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .back-to-admin {
+  color: var(--color-secondary);
+  font-size: 1rem;
   text-decoration: none;
-  color: #007bff;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .back-to-admin:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: var(--color-highlight);
 }
 
-/* כותרת העמוד */
-.page-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333333;
-}
-
-/* סינון */
+/* פילטרים */
 .filters {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
 }
 
 .filter-label {
-  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-text);
 }
 
 .filter-select {
-  padding: 5px 10px;
+  padding: 8px 12px;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--color-secondary);
+  font-size: 1rem;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.filter-select:focus {
+  border-color: var(--color-highlight);
+  outline: none;
+}
+
+/* כפתור חיפוש */
 .search-button {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
+  background-color: var(--color-button);
+  color: #fff;
+  font-size: 1rem;
   padding: 10px 20px;
   border-radius: 5px;
+  border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: var(--color-highlight);
 }
 
-/* הודעות טעינה ושגיאה */
+/* טקסט טעינה */
 .loading-text {
-  color: #555555;
+  color: var(--color-text-light);
   font-size: 1rem;
+  margin-top: 1rem;
 }
 
+/* טקסט שגיאה */
 .error-text {
-  color: red;
+  color: var(--color-error);
   font-size: 1rem;
-  font-weight: bold;
+  margin-top: 1rem;
 }
 
-/* טבלה */
+/* טבלת נתוני מכירות */
 .sales-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .sales-table th,
 .sales-table td {
-  border: 1px solid #cccccc;
   padding: 10px;
+  border: 1px solid var(--color-secondary);
   text-align: center;
 }
 
 .sales-table th {
-  background-color: #f4f4f4;
+  background-color: var(--color-primary);
+  color: white;
   font-weight: bold;
+}
+
+.sales-table td {
+  background-color: #fff;
+  color: var(--color-text);
 }
 
 .sales-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.HomePage{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* קונטיינר דף הבית */
-.home-page-container {
-  background-color: rgba(255, 255, 255, 0.7); /* רקע שקוף */
-  border-radius: 15px;
-  padding: 40px;
-  margin: 20px auto;
-  max-width: 80%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  backdrop-filter: blur(10px); /* מוסיף אפקט מטושטש לרקע */
-}
-
-/* הודעת ברוכים הבאים */
-.welcome-message {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* טקסט מבוא */
-.intro-text {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  font-style: italic;
-}
-
-/* אייקונים או כפתורים עתידיים */
-.home-page-button {
-  background-color: #007bff;
+.sales-table tr:hover {
+  background-color: var(--color-highlight);
   color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .products-chart-container {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .sales-table {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .filter-label {
+    font-size: 0.9rem;
+  }
+
+  .filter-select {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .search-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  .sales-table th,
+  .sales-table td {
+    font-size: 0.8rem;
+  }
+}
+
+/* עיצוב מידע על המשתמשים */
+
+/* הגדרת צבעים ותכונות כללים */
+:root {
+  --color-background: #F5FAFF; /* רקע בהיר עם נגיעות תכלת */
+  --color-primary: #1E90FF; /* תכלת זוהר */
+  --color-secondary: #4682B4; /* כחול כהה */
+  --color-accent: #87CEEB; /* כחול בהיר */
+  --color-highlight: #FF7F50; /* צבע זוהר עבור הודעות שגיאה או התראה */
+  --color-text: #333333; /* צבע טקסט כהה לקריאות */
+  --color-button: #ADD8E6; /* צבע כפתור רך בהיר */
+  --color-button-hover: #4682B4; /* צבע כפתור ב-hover */
+}
+
+/* מיכל פרטי המשתמש */
+.user-details {
+  background-color: var(--color-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid var(--color-secondary);
+  text-align: right;
+  direction: rtl; /* הצגת התוכן מימין לשמאל */
+}
+
+/* כותרת */
+.user-details h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+/* פרטי המשתמש */
+.user-details p {
   font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--color-secondary);
+  padding-bottom: 0.5rem;
+}
+
+/* כפתור חזרה */
+button {
+  background-color: var(--color-button);
+  color: var(--color-background);
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
 }
 
-.home-page-button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: var(--color-button-hover);
+  color: var(--color-background);
 }
 
-.home-page-button:focus {
-  outline: none;
+/* הודעות שגיאה או התראות */
+.error-message {
+  color: var(--color-highlight);
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
+/* ריספונסיביות */
+@media (max-width: 768px) {
+  .user-details {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .user-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .user-details p {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-details h2 {
+    font-size: 1.2rem;
+  }
+
+  .user-details p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+  }
+}

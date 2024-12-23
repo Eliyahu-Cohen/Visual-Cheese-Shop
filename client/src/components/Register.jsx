@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 function Register() {
   const [formData, setFormData] = useState({
     username: "",
@@ -55,8 +54,8 @@ function Register() {
   
 
   return (
-    <div className="register-container">
-      <h2 className="register-title">הרשמה</h2>
+<div className="register-container mediterranean-theme">
+<h2 className="register-title">הרשמה</h2>
 
       <form onSubmit={handleSubmit} className="register-form">
         <label className="register-label">שם משתמש:</label>

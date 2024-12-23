@@ -93,7 +93,7 @@ const AdminOrders = () => {
 
   return (
     <div className="admin-orders">  
-      <Link to="/homePageAdmin">לחזרה לדף ניהול</Link>
+      <Link className="return-admin" to="/homePageAdmin">לחזרה לדף ניהול</Link>
 
       <h2>ניהול הזמנות</h2>
       <table>

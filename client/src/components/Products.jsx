@@ -74,6 +74,12 @@ function Products(props) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    const image = document.getElementById(`image-${product.id}`);
+    image.style.animation = 'flyingToCart 1s forwards';
+  
+    setTimeout(() => {
+      image.style.animation = ''; // אפס את האנימציה לאחר סיום
+    }, 1000); // הזמן של הא
     setCartMessage(`${product.name} נוסף לסל הקניות.`);
     setTimeout(() => setCartMessage(""), 1700);
   };

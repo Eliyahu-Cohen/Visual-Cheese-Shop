@@ -5,7 +5,7 @@ function HomePageAdmin() {
   return (
     <div className="homepage-admin-container">
       {/* Title section of the admin dashboard */}
-      <h1 className="homepage-admin-title">ברוכים הבאים ללוח הבקרה של המנהל</h1>
+      <h1 className="homepage-admin-title">לוח הבקרה של המנהל</h1>
 
       {/* Description guiding the user on navigation */}
       <p className="homepage-admin-description">

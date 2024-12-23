@@ -79,7 +79,7 @@ const AdminUsers = () => {
       </table>
 
       {selectedUser && (
-        <div>
+        <div  className="updateUser">
           <h3>עדכון סוג משתמש עבור {selectedUser.username}</h3>
           <select value={newUserType} onChange={(e) => setNewUserType(e.target.value)}>
             <option value="">בחר סוג משתמש</option>
