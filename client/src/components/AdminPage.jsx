@@ -4,6 +4,11 @@ import axios from "axios";
 
 function AdminPage() {
   const [categories, setCategories] = useState([]);
+  const [isExpanded1, setIsExpanded1] = useState(false);
+  const [isExpanded2, setIsExpanded2] = useState(false);
+  const [isExpanded3, setIsExpanded3] = useState(false);
+  const [isExpanded4, setIsExpanded4] = useState(false);
+
   const [subCategories, setSubCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [subCategoryName, setSubCategoryName] = useState("");
@@ -129,8 +134,17 @@ function AdminPage() {
     <Link to="/homePageAdmin">לחזרה לדף ניהול</Link>
 
       <h2>דף ניהול מוצרים וקטגוריות</h2>
+
+      <div className="buttonsExpanded"> 
+<button className="form-header" onClick={() => setIsExpanded1(!isExpanded1)}>להוספת קטגוריה</button>
+<button className="form-header" onClick={() => setIsExpanded2(!isExpanded2)}>להוספת קטגוריה</button>
+<button className="form-header" onClick={() => setIsExpanded3(!isExpanded3)}>להוספת קטגוריה</button>
+<button className="form-header" onClick={() => setIsExpanded4(!isExpanded4)}>להוספת קטגוריה</button>
+
+</div>
+
       {/* טופס להוספת קטגוריה */}
-      <div className="form-section">
+      {isExpanded1 && (  <div className="form-section">
         <h3 className="section-title">הוספת קטגוריה</h3>
         <input
           type="text"
@@ -142,9 +156,11 @@ function AdminPage() {
         <button className="submit-button" onClick={handleAddCategory}>
           הוסף קטגוריה
         </button>
-      </div>
+      </div>)}
+     
+
       {/* טופס להוספת תת-קטגוריה */}
-      <div className="form-section">
+      {isExpanded2 && (     <div className="form-section">
         <h3 className="section-title">הוספת תת-קטגוריה</h3>
         <select
           className="select-field"
@@ -168,7 +184,10 @@ function AdminPage() {
         <button className="submit-button" onClick={handleAddSubCategory}>
           הוסף תת-קטגוריה
         </button>
-      </div>
+      </div>)}
+
+      
+  
       <div className="form-section">
         <h3 className="section-title">מחיקת קטגוריה</h3>
         <select

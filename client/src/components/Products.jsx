@@ -96,10 +96,22 @@ function Products(props) {
             id={`image-${product.id}`}
             onClick={() => handleProductClick(product)}
           />
+          {/* <div className="custom-badgen">
+
           {product.isOnSale === 1 && (
-            <span className="badge badge-sale">מבצע</span>
+            <span className="badge badge-salen">מבצע</span>
           )}
-          {product.isNew === 1 && <span className="badge badge-new">חדש</span>}
+          {product.isNew === 1 && <span className="badge badge-newn">חדש</span>}
+          </div> */}
+          <div className="custom-badge">
+        {product.isOnSale === 1 && (
+          <span className="badge badge-sale">מבצע</span>
+        )}
+        {product.isNew === 1 && (
+          <span className="badge badge-new">חדש</span>
+        )}
+      </div>
+          
           <h3 className="product-name">{product.name}</h3>
           <p className="product-manufacturer">{product.manufacturer}</p>
           <p className="product-weight">משקל: {product.weight} גרם</p>
